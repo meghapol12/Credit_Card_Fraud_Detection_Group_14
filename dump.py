@@ -10,7 +10,7 @@ try:
     df = pd.read_csv(csv_file)
     print("✅ CSV loaded successfully!")
 except FileNotFoundError:
-    print("❌ Error: CSV file not found. Check the path.")
+    print("❌\ Error: CSV file not found. Check the path.")
     exit()
 
 # === STEP 2: Connect to MySQL ===
@@ -20,7 +20,7 @@ try:
         host="localhost",
         user="root",
         password="root",
-        database="frauddb"
+        database="fraudb"
     )
     cursor = connection.cursor()
     print("🔌 Connected to MySQL database 'frauddb'")
@@ -35,10 +35,10 @@ try:
         amt_per_capita DOUBLE,
         is_far INT,
         hour_bucket_encoded DOUBLE,
-        category_grocery_pos DOUBLE,
+        category_grocerypos DOUBLE,
         category_home DOUBLE,
         category_shopping_pos DOUBLE,
-        category_kids_pets DOUBLE,
+        category_kid_pets DOUBLE,
         category_shopping_net DOUBLE,
         category_entertainment DOUBLE,
         category_food_dining DOUBLE,
@@ -46,9 +46,8 @@ try:
         category_health_fitness DOUBLE,
         category_misc_pos DOUBLE,
         category_misc_net DOUBLE,
-        category_grocery_net DOUBLE,
         category_travel DOUBLE,
-        gender_M DOUBLE,
+        gender_m DOUBLE,
         city_freq INT,
         is_fraud INT
     )
@@ -64,7 +63,7 @@ try:
     """
     rows = [tuple(row) for row in df.values]
 
-    print(f"🚚 Inserting {len(rows)} rows in chunks...")
+    print(f Inserting {len(rows)} rows in chunks...")
 
     chunk_size = 10000
     for i in range(0, len(rows), chunk_size):
@@ -73,7 +72,7 @@ try:
         connection.commit()
         print(f"✅ Inserted rows {i} to {i + len(chunk) - 1}")
 
-    print("🎉 All data inserted successfully into MySQL!")
+    print(" All data inserted successfully into MySQL!")
 
 except Error as e:
     print(f"❌ MySQL Error: {e}")
@@ -83,3 +82,4 @@ finally:
         cursor.close()
         connection.close()
         print("🔌 MySQL connection closed.")
+
